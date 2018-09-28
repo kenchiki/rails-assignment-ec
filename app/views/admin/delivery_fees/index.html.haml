@@ -1,0 +1,6 @@
+%h1 送料一覧
+
+%ul.controls
+  %li= link_to '送料追加', new_admin_delivery_fee_path, {class: 'btn btn-primary'}
+
+= render 'index', delivery_fees: @presenter.delivery_fees

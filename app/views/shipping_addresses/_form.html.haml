@@ -1,0 +1,11 @@
+-# frozen_string_literal: true
+
+= simple_form_for [current_user, shipping_address], defaults: {  input_html: { class: 'form-control' } } do |f|
+  =render 'application/validation_errors', f: f
+
+  = f.input :name
+  = f.input :address
+  = f.input :post
+  = f.input :tel
+  .controls
+    = f.button :submit, class: 'btn-danger'

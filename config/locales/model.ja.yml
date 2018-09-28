@@ -1,0 +1,59 @@
+---
+ja:
+  activerecord:
+    models:
+      cart_product: カートの商品
+    attributes:
+      user:
+        email: メールアドレス
+        name: 名前
+        address: 住所
+        post: 郵便番号
+        tel: 電話番号
+        password: パスワード
+        password_confirmation: パスワード確認用
+        current_password: 現在のパスワード
+        remember_me: ログイン情報を記憶する
+        created_at: 登録日
+      product:
+        name: 商品名
+        description: 商品説明
+        image: 写真
+        remove_image: 写真を削除する
+      product_price:
+        price: 価格
+      product_publish:
+        published: 公開
+      delivery_fee:
+        per: 個数毎
+        fee: 手数料
+        began_at: 適用開始日
+      cash_on_delivery:
+        began_at: 適用開始日
+      cash_on_delivery_fee:
+        began_price: 開始価格
+        fee: 代引き手数料
+      tax:
+        rate: 税率
+        began_at: 適用開始日
+      cart_product:
+        quantity: 数量
+      shipping_address:
+        name: 名前
+        address: 住所
+        post: 郵便番号
+        tel: 電話番号
+      order:
+        delivery_date: 配達希望日
+        delivery_time_id: 配達希望時間
+    errors:
+      messages:
+        relation_empty: 関連情報がありません
+        relation_not_has_zero: 0円以上の開始価格を必ず一つ用意してください
+      models:
+        order:
+          cart_empty: カートの中身がありません
+          shipping_address_empty: 配送情報がありません
+        cash_on_delivery:
+          began_at_or_ended_at: 開始日、終了日どちらかを入力してください
+          beginning_price_or_ending_price: 開始価格、終了価格どちらかを入力してください

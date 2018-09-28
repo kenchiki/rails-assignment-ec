@@ -1,0 +1,62 @@
+%table.table.table-striped.table-bordered.table--total
+  %tbody
+    %tr
+      %th 注文日時
+      %td= l(order.created_at, format: :long)
+    %tr
+      %th 配達希望日
+      %td= l(order.delivery_date, format: :long)
+    %tr
+      %th 配達希望時間
+      %td= order.delivery_time_name
+    %tr
+      %th 商品小計
+      %td= "#{number_with_delimiter(order.products_total)}円"
+    %tr
+      %th 代引き手数料
+      %td= "#{number_with_delimiter(order.cash_on_delivery_fee)}円"
+    %tr
+      %th 送料
+      %td= "#{number_with_delimiter(order.delivery_fee)}円"
+    %tr
+      %th 代引き手数料
+      %td= "#{number_with_delimiter(order.cash_on_delivery_fee)}円"
+    %tr
+      %th 合計金額（税別）
+      %td= "#{number_with_delimiter(order.cart_total)}円"
+    %tr
+      %th 合計金額（税込）
+      %td= "#{number_with_delimiter(order.cart_total_with_tax)}円"
+
+%h2.title 配送先
+
+%table.table.table-striped.table-bordered.table--total
+  %tbody
+    %tr
+      %th= t_model('shipping_address.name')
+      %td= order.user_name
+    %tr
+      %th= t_model('shipping_address.post')
+      %td= order.user_post
+    %tr
+      %th= t_model('shipping_address.address')
+      %td= order.user_address
+    %tr
+      %th= t_model('shipping_address.tel')
+      %td= order.user_tel
+
+%h2.title 注文商品一覧
+
+%table{class: 'table table-striped table--responsive table--cart_products2'}
+  %thead
+    %tr
+      %th= t_model('product.name')
+      %th= t_model('product_price.price')
+      %th= t_model('cart_product.quantity')
+
+  %tbody
+    - order.cart_products.each do |cart_product|
+      %tr
+        %td{'aria-label': t_model('product.name')}= cart_product.product_name
+        %td{'aria-label': t_model('product_price.price')}= cart_product.product_price
+        %td{'aria-label': t_model('cart_product.quantity')}= cart_product.quantity

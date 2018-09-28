@@ -1,0 +1,211 @@
+@charset "UTF-8";
+
+.table--responsive {
+  @include breakpoint-sp {
+    thead {
+      display: none;
+    }
+
+    tr {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      display: block;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+
+    td {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+      &:first-child {
+        border-top: 0;
+      }
+    }
+
+    td:before {
+      content: attr(aria-label);
+      font-weight: bold;
+      width: 40%;
+    }
+  }
+}
+
+.table--tax {
+  margin-top: 30px;
+  @include breakpoint-pc {
+    td {
+      &:nth-child(1) {
+        width: 10%;
+      }
+      &:nth-child(2) {
+        width: 10%;
+      }
+      &:nth-child(3) {
+        width: 10%;
+      }
+      &:nth-child(4) {
+        width: 20%;
+      }
+    }
+  }
+}
+
+.table--users {
+  margin-top: 30px;
+  @include breakpoint-pc {
+    td {
+      &:nth-child(1) {
+        width: 10%;
+      }
+      &:nth-child(2) {
+        width: 20%;
+      }
+      &:nth-child(3) {
+        width: 20%;
+      }
+      &:nth-child(4) {
+        width: 50%;
+      }
+    }
+  }
+}
+
+.table--delivery_fee {
+  margin-top: 30px;
+  @include breakpoint-pc {
+    td {
+      &:nth-child(1) {
+        width: 10%;
+      }
+      &:nth-child(2) {
+        width: 10%;
+      }
+      &:nth-child(3) {
+        width: 10%;
+      }
+      &:nth-child(4) {
+        width: 10%;
+      }
+      &:nth-child(5) {
+        width: 20%;
+      }
+    }
+  }
+}
+
+.table--cash_on_delivery {
+  margin-top: 30px;
+  @include breakpoint-pc {
+    td {
+      &:nth-child(1) {
+        width: 15%;
+      }
+      &:nth-child(2) {
+        width: 10%;
+      }
+      &:nth-child(3) {
+        width: 20%;
+      }
+      &:nth-child(4) {
+        width: 35%;
+      }
+    }
+  }
+}
+
+.table--cash_on_delivery2 {
+  @include breakpoint-pc {
+    td {
+      &:nth-child(1) {
+        width: 50%;
+      }
+      &:nth-child(2) {
+        width: 50%;
+      }
+    }
+  }
+}
+
+.table--total , .table--user_detail {
+  margin-top: 30px;
+  @include breakpoint-pc {
+    td {
+      &:nth-child(1) {
+        width: 20%;
+      }
+      &:nth-child(2) {
+        width: 80%;
+      }
+    }
+  }
+}
+
+.table--cart_products {
+  margin-top: 30px;
+  @include breakpoint-pc {
+    td {
+      &:nth-child(1) {
+        width: 30%;
+      }
+      &:nth-child(2) {
+        width: 10%;
+      }
+      &:nth-child(3) {
+        width: 10%;
+      }
+      &:nth-child(4) {
+        width: 50%;
+      }
+    }
+  }
+}
+
+.table--cart_products2 {
+  margin-top: 30px;
+  @include breakpoint-pc {
+    td {
+      &:nth-child(1) {
+        width: 30%;
+      }
+      &:nth-child(2) {
+        width: 10%;
+      }
+      &:nth-child(3) {
+        width: 60%;
+      }
+    }
+  }
+}
+
+.table--orders {
+  margin-top: 30px;
+  @include breakpoint-pc {
+    td {
+      &:nth-child(1) {
+        width: 30%;
+      }
+      &:nth-child(2) {
+        width: 70%;
+      }
+    }
+  }
+}
+
+.table--orders2 {
+  margin-top: 30px;
+  @include breakpoint-pc {
+    td {
+      &:nth-child(1) {
+        width: 10%;
+      }
+      &:nth-child(2) {
+        width: 30%;
+      }
+      &:nth-child(3) {
+        width: 60%;
+      }
+    }
+  }
+}

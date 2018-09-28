@@ -1,0 +1,11 @@
+%ul.products
+  - products.each do |product|
+    %li.products__product
+      %p.products__img
+        = link_to new_product_cart_product_path(product) do
+          = image_tag product.image.thumb.url if product.image?
+          = image_tag 'no_image.png' unless product.image?
+      %div.products__detail
+        %p= link_to product.name, new_product_cart_product_path(product), {'data-test': "product__show_#{product.id}"}
+        %p.strong= "#{number_with_delimiter(product.last_price)}円"
+        %p= product.description if product.description?

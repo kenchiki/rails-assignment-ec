@@ -1,0 +1,8 @@
+%h1 商品管理一覧
+
+%ul.controls
+  %li
+    = link_to '商品追加', new_admin_product_path, {class: 'btn btn-primary'}
+
+= render 'index', products: @presenter.products
+= paginate @presenter.products

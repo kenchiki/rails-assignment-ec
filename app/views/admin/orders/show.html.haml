@@ -1,0 +1,6 @@
+%h1 注文確認詳細
+
+=render 'show', order: @presenter.order
+
+.controls
+  = link_to '一覧に戻る', admin_orders_path, {class: 'btn btn-secondary'}

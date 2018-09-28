@@ -1,0 +1,8 @@
+- if f.object.errors.any?
+  .alert.alert-danger{:role => "alert"}
+    %p.alert-heading= "以下の#{f.object.errors.count}つのエラーがあります"
+    - if f.object.errors[:base].present?
+      .wysiwyg
+        %ul
+          - f.object.errors[:base].each do |message|
+            %li= message

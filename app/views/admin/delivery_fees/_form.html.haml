@@ -1,0 +1,9 @@
+= simple_form_for [:admin, delivery_fee], defaults: {  input_html: { class: 'form-control' } }, wrapper: :input_group do |f|
+  =render 'application/validation_errors', f: f
+
+  = f.input :per
+  = f.input :fee, append: '円'
+  = f.input :began_at
+  .controls
+    = f.button :submit, class: 'btn-danger'
+    = link_to '一覧に戻る', admin_delivery_fees_path, class: 'btn btn-secondary'

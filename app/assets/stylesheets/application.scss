@@ -1,0 +1,137 @@
+@import "bootstrap_variables";
+@import "bootstrap";
+
+@import "module_variables";
+@import "module/module";
+
+@import "fontawesome/fontawesome";
+@import "fontawesome/solid";
+@import "fontawesome/brands";
+
+@import "drawer";
+@import "header";
+@import "table";
+
+h1, .h1 {
+  @include breakpoint-sp {
+    font-size: 3rem;
+  }
+}
+
+h2, .h2 {
+  @include breakpoint-sp {
+    font-size: 2.5rem;
+  }
+}
+
+.title {
+  margin-top: 30px;
+}
+
+.strong {
+  color: #aa0000;
+}
+
+#container {
+  @include container;
+  margin-top: 30px;
+  padding-bottom: 30px;
+}
+
+.products {
+  margin-top: 30px;
+  @include breakpoint-pc {
+    @include grid($x: 20, $y: 20, $n: 4);
+  }
+  @include breakpoint-sp {
+    @include grid($x: 20, $y: 20, $n: 2);
+  }
+
+  &__product {
+    border-radius: 5px;
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0px 0px 6px -3px rgba(#000000, .5);
+  }
+  &__img {
+    img {
+      width: 100%;
+    }
+  }
+  &__detail {
+    margin-top: 10px;
+
+  }
+  &__control {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    .btn {
+      font-size: 1.1rem;
+      margin-right: 5px;
+    }
+  }
+  &__crud, &__sort {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+  &__sort {
+    margin-top: 5px;
+  }
+}
+
+.pagination {
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.controls {
+  margin-top: 30px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  & > * {
+    margin-right: 10px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &--cocoon {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+}
+
+.simple_form {
+  margin-top: 30px;
+}
+
+.product-detail {
+  margin-top: 30px;
+  @include breakpoint-pc {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    &__img {
+      width: 350px;
+      img {
+        width: 100%;
+      }
+    }
+
+    &__detail {
+      width: calc(100% - 370px);
+    }
+
+    &__price {
+      font-size: 2.4rem;
+    }
+  }
+  @include breakpoint-sp {
+    &__detail {
+      margin-top: 30px;
+    }
+  }
+}

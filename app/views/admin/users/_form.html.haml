@@ -1,0 +1,7 @@
+= simple_form_for [:admin, user] do |f|
+  =render 'application/validation_errors', f: f
+
+  = f.input :email
+  .controls
+    = f.button :submit, class: 'btn-danger'
+    = link_to '一覧に戻る', admin_users_path, class: 'btn btn-secondary'

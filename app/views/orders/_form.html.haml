@@ -1,0 +1,19 @@
+= simple_form_for order do |f|
+  =render 'application/validation_errors', f: f
+
+  = f.input :delivery_date, as: :select, collection: delivery_dates, include_blank: false
+  = f.input :delivery_time_id, as: :select, collection: delivery_times, include_blank: false
+
+  - unless has_shipping_address?
+    %p 配送先情報が登録されていません。下記のリンクから登録してください。
+    .controls
+      = link_to '配送情報登録', new_user_shipping_address_path(current_user), class: 'btn btn-primary'
+  - if has_shipping_address?
+    = render 'orders/shipping_address', shipping_address: @presenter.shipping_address_last
+    .controls
+      = link_to '配送情報先を編集', new_user_shipping_address_path(current_user), class: 'btn btn-primary'
+
+  .controls
+    - if has_shipping_address?
+      = f.button :submit, class: 'btn-danger'
+      = link_to 'ショッピングカートに戻る', cart_products_path, class: 'btn btn-secondary'

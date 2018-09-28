@@ -1,0 +1,13 @@
+= simple_form_for [:admin, cod], wrapper: :input_group do |f|
+  =render 'application/validation_errors', f: f
+
+  = f.input :began_at
+
+  #cash_on_delivery_fees
+    = f.fields_for :cash_on_delivery_fees do |cash_on_delivery_fee|
+      = render 'cash_on_delivery_fee_fields', f: cash_on_delivery_fee
+    .controls
+      = link_to_add_association '代引き手数料追加', f, :cash_on_delivery_fees, class: 'btn btn-outline-primary', 'data-test': 'cash-on-delivery__add'
+  .controls
+    = f.button :submit, class: 'btn-danger'
+    = link_to '一覧に戻る', admin_cash_on_deliveries_path, class: 'btn btn-secondary'

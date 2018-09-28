@@ -1,0 +1,21 @@
+%table.table.table-striped.table-bordered.table--user_detail
+  %tbody
+    %tr
+      %th ID
+      %td= user.id
+    %tr
+      %th= t_model('user.email')
+      %td= user.email
+    - if user.has_shipping_address?
+      %tr
+        %th= t_model('user.name')
+        %td= user.name
+      %tr
+        %th= t_model('user.address')
+        %td= user.address
+      %tr
+        %th= t_model('user.post')
+        %td= user.post
+      %tr
+        %th= t_model('user.tel')
+        %td= user.tel

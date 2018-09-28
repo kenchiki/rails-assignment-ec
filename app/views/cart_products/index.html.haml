@@ -1,0 +1,11 @@
+%h1 ショッピングカート
+
+- if @presenter.cart.has_cart_products?
+  = render 'total', cart: @presenter.cart
+  = render 'index', cart: @presenter.cart
+
+  .controls
+    = link_to 'レジに進む', new_order_path, class: 'btn btn-primary', 'data-test': 'order__new'
+- else
+  .wysiwyg.wysiwyg--section
+    %p ショッピングカートの中は空です

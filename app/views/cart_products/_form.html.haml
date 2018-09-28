@@ -1,0 +1,17 @@
+.product-detail
+  %p.product-detail__img
+    = image_tag product.image.thumb.url if product.image?
+    = image_tag 'no_image.png' unless product.image?
+
+  .product-detail__detail
+    %h2= product.name
+    .form-group
+      価格：
+      %span.product-detail__price.strong= "#{number_with_delimiter(product.last_price)}円"
+    .form-group
+      = simple_format(product.description)
+    = simple_form_for [product, cart_product] do |f|
+      =render 'application/validation_errors', f: f
+      = f.input :quantity, as: :select, collection: quantity_range, include_blank: false
+      .controls
+        = f.button :submit, class: 'btn-danger'

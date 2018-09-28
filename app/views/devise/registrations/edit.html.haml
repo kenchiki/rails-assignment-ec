@@ -1,0 +1,27 @@
+%h1 ログイン情報編集
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  =render 'application/validation_errors', f: f
+
+  = f.input :email, required: true, autofocus: true
+  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+    %p
+      Currently waiting confirmation for: #{resource.unconfirmed_email}
+  = f.input :password,
+    hint: 'パスワードを変更しない場合は空にしてください',
+    required: false,
+    input_html: { autocomplete: "new-password" }
+
+  = f.input :password_confirmation,
+    required: false,
+    input_html: { autocomplete: "new-password" }
+
+  = f.input :current_password,
+    required: true,
+    input_html: { autocomplete: "current-password" }
+  .controls
+    = f.button :submit, class: 'btn-danger'
+
+%h2.title アカウント削除
+.controls
+  = link_to 'アカウントを削除する', registration_path(resource_name), data: { confirm: t_common('delete_confirm') }, method: :delete, class: 'btn btn-danger'
+

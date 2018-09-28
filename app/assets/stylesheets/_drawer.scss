@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+// コンテンツが短い場合、オーバーレイが途中で切れるのを防止
+html, body {
+  height:100%;
+}
+
+#wrapper {
+  -webkit-transition: transform .2s;
+  transition: transform .2s;
+}
+
+.drawer__overlay {
+  @include breakpoint-pc {
+    display: none;
+  }
+  @include breakpoint-sp {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 9998;
+    background: rgba(0, 0, 0, .3);
+  }
+}
+
+.drawer__menu {
+  @include breakpoint-pc {
+    display: none;
+  }
+  @include breakpoint-sp {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    background: #fff;
+    .drawer__links {
+      li {
+        border-bottom: 1px dotted #D3DCE2;
+        a {
+          display: block;
+          padding: 15px;
+          text-decoration: none;
+        }
+        i {
+          margin-bottom: -3px;
+          margin-right: 10px;
+        }
+      }
+    }
+    .drawer__edit {
+      background: #00B7E2;
+      a {
+        color: #FFFFFF !important;
+      }
+    }
+  }
+}
+
+.drawer__open {
+  @include breakpoint-sp {
+    overflow-x: hidden;
+    #wrapper {
+      -webkit-transform: translate3d(250px, 0, 0);
+      transform: translate3d(250px, 0, 0);
+      overflow: hidden;
+    }
+
+    .drawer__menu {
+      -webkit-transform: translate3d(250px, 0, 0);
+      transform: translate3d(250px, 0, 0);
+    }
+  }
+}

@@ -1,0 +1,17 @@
+%table.table.table-striped.table-bordered.table--total
+  %tbody
+    %tr
+      %th 商品小計
+      %td= "#{number_with_delimiter(cart.products_total)}円"
+    %tr
+      %th 送料
+      %td= "#{number_with_delimiter(cart.delivery_fee)}円"
+    %tr
+      %th 代引き手数料
+      %td= "#{number_with_delimiter(cart.cash_on_delivery_fee)}円"
+    %tr
+      %th 合計金額（税別）
+      %td= "#{number_with_delimiter(cart.cart_total)}円"
+    %tr
+      %th 合計金額（税込）
+      %td= "#{number_with_delimiter(cart.cart_total_with_tax)}円"

@@ -1,0 +1,12 @@
+ja:
+  helpers:
+    submit:
+      order:
+        create: 購入する
+      cart_product:
+        create: カートに追加する
+  simple_form:
+    required:
+      # You can uncomment the line below if you need to overwrite the whole required html.
+      # When using html, text and mark won't be used.
+      html: '<span class="badge badge-danger">必須</span>'

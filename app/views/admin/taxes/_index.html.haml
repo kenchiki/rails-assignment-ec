@@ -1,0 +1,28 @@
+
+%table{class: 'table table-striped table--responsive table--tax'}
+  %thead
+    %tr
+      %th 適用状況
+      %th ID
+      %th= t_model('tax.rate')
+      %th= t_model('tax.began_at')
+      %th 操作
+  %tbody
+    - taxes.each do |tax|
+      %tr
+        %td{'aria-label': '適用状況'}
+          %span{class: 'badge badge-info'}= '現在の税率' if tax.current_tax?
+        %td{'aria-label': 'ID'}
+          = tax.id
+        %td{'aria-label': t_model('tax.rate')}
+          - if tax.current_tax?
+            %span{'data-test': 'tax__current_rate'}= "#{tax.rate}%"
+          - else
+            = "#{tax.rate}%" unless tax.current_tax?
+        %td{'aria-label': t_model('tax.began_at')}
+          = l(tax.began_at, format: :long)
+        %td{'aria-label': '操作'}
+          - unless tax.began?
+            = link_to '編集', edit_admin_tax_path(tax), class: 'btn btn-primary'
+          - unless tax.began?
+            = link_to '削除', [:admin, tax], method: :delete, data: { confirm: t_common('delete_confirm') }, 'data-test': "tax__destroy_#{tax.id}", class: 'btn btn-danger'

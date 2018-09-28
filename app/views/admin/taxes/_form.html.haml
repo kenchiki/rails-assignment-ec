@@ -1,0 +1,8 @@
+= simple_form_for [:admin, tax] do |f|
+  =render 'application/validation_errors', f: f
+
+  = f.input :rate, step: 0.1
+  = f.input :began_at
+  .controls
+    = f.button :submit, class: 'btn-danger'
+    = link_to '一覧に戻る', admin_taxes_path, class: 'btn btn-secondary'

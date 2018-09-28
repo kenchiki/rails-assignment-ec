@@ -1,0 +1,7 @@
+%h1 代引き手数料一覧
+
+%ul.controls
+  %li
+    = link_to '代引き手数料追加', new_admin_cash_on_delivery_path, {class: 'btn btn-primary'}
+
+= render 'index', cods: @presenter.cods

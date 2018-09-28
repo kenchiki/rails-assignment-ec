@@ -1,0 +1,12 @@
+
+.product-detail
+  %p.product-detail__img
+    = image_tag product.image.thumb.url if product.image?
+    = image_tag 'no_image.png' unless product.image?
+  .product-detail__detail
+    %h2= product.name
+    .form-group
+      価格：
+      %strong.product-detail__price.strong= "#{product.last_price}円"
+    .form-group
+      = simple_format(product.description)

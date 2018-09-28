@@ -1,0 +1,4 @@
+- if current_cart.has_cart_products?
+  #cart_products_quantity
+    .alert.alert-primary{role: 'alert'}
+      = "現在ショッピングカートに#{current_cart.products_quantity}点の商品が入っています"

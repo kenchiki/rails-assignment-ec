@@ -1,0 +1,57 @@
+---
+ja:
+  admin:
+    taxes:
+      exclude_began: 税率が開始されているため操作できません
+      create:
+        success: 税率を追加しました
+      update:
+        success: 税率を更新しました
+      destroy:
+        success: 税率を削除しました
+        failure: 税率が開始されているため削除できません
+    delivery_fees:
+      exclude_began: 送料が開始されているため操作できません
+      create:
+        success: 送料を追加しました
+      update:
+        success: 送料を更新しました
+      destroy:
+        success: 送料を削除しました
+        failure: 送料が開始されているため削除できません
+    cash_on_deliveries:
+      exclude_began: 代引き手数料が開始されているため操作できません
+      create:
+        success: 代引き手数料を追加しました
+      update:
+        success: 代引き手数料を更新しました
+      destroy:
+        success: 代引き手数料を削除しました
+    products:
+      create:
+        success: 商品を追加しました
+      update:
+        success: 商品を更新しました
+      destroy:
+        success: 商品を削除しました
+        failure: すでにショッピングカートに追加されているので商品が削除できませんでした
+      sort_success: 並び替えが完了しました
+    users:
+      update:
+        success: ユーザー情報を更新しました
+      destroy:
+        success: ユーザー情報を削除しました
+  cart_products:
+    adjustment: "%{product}の個数が%{max_quantity}を超えたので%{max_quantity}個に調整しました"
+    create:
+      success: カートに商品を追加しました
+    update:
+      success: カートの中身を更新しました
+    destroy:
+      success: カートの商品を削除しました
+  orders:
+    create:
+      success: 注文が完了しました
+  shipping_addresses:
+    create:
+      success: 配送先を変更しました

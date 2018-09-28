@@ -1,0 +1,12 @@
+%h1 確認メールを再送
+= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+  =render 'application/validation_errors', f: f
+  = f.full_error :confirmation_token
+  = f.input :email,
+    required: true,
+    autofocus: true,
+    value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+    input_html: { autocomplete: "email" }
+  .controls
+    = f.button :submit, '確認メールを再送', class: 'btn-danger'
+= render "devise/shared/links"

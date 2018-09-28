@@ -1,0 +1,4 @@
+%h1 注文確認一覧
+
+= render 'index', orders: @presenter.orders
+= paginate @presenter.orders

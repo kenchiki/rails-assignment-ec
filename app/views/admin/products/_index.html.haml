@@ -1,0 +1,25 @@
+%ul.products
+  - products.each do |product|
+    %li.products__product
+      %p.products__img
+        = link_to admin_product_path(product) do
+          = image_tag product.image.thumb.url if product.image?
+          = image_tag 'no_image.png' unless product.image?
+      %div.products__detail
+        %p= link_to "#{product.id}:#{product.name}", admin_product_path(product)
+        %p.products__price.strong= "#{number_with_delimiter(product.last_price)}円"
+        %p= "状態：#{product.last_published? ? '公開' : '非公開'}"
+        %p= product.description if product.description?
+      %div.products__control
+        %p.products__crud
+          = link_to '編集', edit_admin_product_path(product), class: 'btn btn-primary'
+          = link_to '削除', [:admin, product], method: :delete, data: { confirm: t_common('delete_confirm') }, 'data-test': "product__destroy_#{product.id}", class: 'btn btn-danger'
+        %p.products__sort
+          = link_to with_query(sort_top_admin_product_path(product)), method: :put, data: { confirm: t_common('delete_confirm') }, 'data-test': "product__top_#{product.id}", class: 'btn btn-secondary', 'data-toggle':'tooltip' ,'data-placement':'bottom' ,title:'一番先頭へ並び替え' do
+            %i{class: "fas fa-angle-double-left"}
+          = link_to with_query(sort_up_admin_product_path(product)), method: :put, 'data-test': "product__up_#{product.id}", class: 'btn btn-secondary', 'data-toggle':'tooltip' ,'data-placement':'bottom' ,title:'一つ前へ並び替え' do
+            %i{class:"fas fa-angle-left"}
+          = link_to with_query(sort_down_admin_product_path(product)), method: :put, 'data-test': "product__down_#{product.id}", class: 'btn btn-secondary', 'data-toggle':'tooltip' ,'data-placement':'bottom' ,title:'一つ後ろへ並び替え' do
+            %i{class:"fas fa-angle-right"}
+          = link_to with_query(sort_bottom_admin_product_path(product)), method: :put, data: { confirm: t_common('delete_confirm') }, 'data-test': "product__bottom_#{product.id}", class: 'btn btn-secondary', 'data-toggle':'tooltip' ,'data-placement':'bottom' ,title:'一番最後へ並び替え' do
+            %i{class: "fas fa-angle-double-right"}

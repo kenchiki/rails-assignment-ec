@@ -1,0 +1,6 @@
+= render 'application/cart'
+
+%h1 商品一覧
+
+= render 'index', products: @presenter.published_products
+= paginate @presenter.published_products

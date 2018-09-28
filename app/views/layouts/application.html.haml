@@ -1,0 +1,66 @@
+!!!
+%html{lang: "ja"}
+  %head
+    %title さくらマーケット
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %meta{content: 'width=device-width,initial-scale=1', name: 'viewport'}
+  %body
+    #wrapper
+      %header#header
+        #header-in
+          %p#header-logo
+            = link_to root_path do
+              さくらマーケット
+              %span#header-logo__caption （ECサイトはデモです）
+          %ul#header-nav
+            %li= link_to 'お買い物', products_path
+            %li= link_to 'ショッピングカート', cart_products_path
+            - if user_signed_in?
+              %li.dropdown
+                = link_to 'アカウント情報', '#', {class: 'dropdown-toggle', 'data-toggle': 'dropdown'}
+                .dropdown-menu
+                  = link_to '配送情報登録', new_user_shipping_address_path(current_user), {class: 'dropdown-item'}
+                  = link_to 'ログイン情報編集', edit_user_registration_path, {class: 'dropdown-item'}
+                  = link_to '注文履歴', orders_path, {class: 'dropdown-item'}
+              - if administrator?
+                %li.dropdown
+                  = link_to 'システム管理', '#', {class: 'dropdown-toggle', 'data-toggle': 'dropdown'}
+                  .dropdown-menu
+                    = link_to '商品管理', admin_products_path, {class: 'dropdown-item'}
+                    = link_to '税率管理', admin_taxes_path, {class: 'dropdown-item'}
+                    = link_to '送料管理', admin_delivery_fees_path, {class: 'dropdown-item'}
+                    = link_to '代引き手数料管理', admin_cash_on_deliveries_path, {class: 'dropdown-item'}
+                    = link_to 'ユーザー管理', admin_users_path, {class: 'dropdown-item'}
+                    = link_to '注文確認', admin_orders_path, {class: 'dropdown-item'}
+          %ul#header-auth
+            - if user_signed_in?
+              %li= link_to 'ログアウト', destroy_user_session_path, method: :delete
+            - else
+              %li= link_to 'ログイン', new_user_session_path, data: {test: 'login__new_link'}
+          %p#header-drawer
+            - if user_signed_in?
+              %i.fa.fa-bars.drawer__toggle
+            - else
+              = link_to 'ログイン', new_user_session_path
+      #container
+        = render 'application/flash'
+        = yield
+    .drawer__menu
+      - if user_signed_in?
+        %ul.drawer__links
+          %li= link_to 'お買い物', products_path
+          %li= link_to 'ショッピングカート', cart_products_path
+          %li= link_to '配送情報登録', new_user_shipping_address_path(current_user)
+          %li= link_to 'ログイン情報編集', edit_user_registration_path
+          %li= link_to '注文履歴', orders_path
+          - if administrator?
+            %li= link_to '商品管理', admin_products_path
+            %li= link_to '税率管理', admin_taxes_path
+            %li= link_to '送料管理', admin_delivery_fees_path
+            %li= link_to '代引き手数料管理', admin_cash_on_deliveries_path
+            %li= link_to 'ユーザー管理', admin_users_path
+            %li= link_to '注文確認', admin_orders_path
+          %li= link_to 'ログアウト', destroy_user_session_path, method: :delete

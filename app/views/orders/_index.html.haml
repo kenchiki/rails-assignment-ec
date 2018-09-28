@@ -1,0 +1,12 @@
+
+%table{class: 'table table-striped table--responsive table--orders'}
+  %thead
+    %tr
+      %th 注文日時
+      %th 詳細
+
+  %tbody
+    - orders.each do |order|
+      %tr
+        %td{'aria-label': '注文日時'}= l(order.created_at, format: :long)
+        %td{'aria-label': '詳細'}= link_to '注文詳細', order, class: 'btn btn-secondary'

@@ -1,0 +1,5 @@
+.nested-fields
+  = f.input :began_price, append: '円以上'
+  = f.input :fee, append: '円'
+  .controls.controls--cocoon
+    = link_to_remove_association "代引き手数料を削除する", f, class: 'btn btn-outline-danger'
